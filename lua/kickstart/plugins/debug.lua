@@ -64,6 +64,7 @@ return {
       ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
         'delve',
+        'cpptools',
       },
     }
 
@@ -92,6 +93,30 @@ return {
     dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
+
+    dap.configurations.cpp = {
+      {
+        name = 'C++ Debug And Run',
+        type = 'codelldb',
+        request = 'launch',
+        program = function()
+          -- First, check if exists CMakeLists.txt
+          local cwd = vim.fn.getcwd()
+          local fileName = vim.fn.expand '%:t:r'
+          -- create this directory
+          os.execute('mkdir -p ' .. 'bin')
+          local cmd = '!g++ -g % -o bin/' .. fileName
+          -- First, compile it
+          vim.cmd(cmd)
+          -- Then, return it
+          return '${fileDirname}/bin/' .. fileName
+        end,
+        cwd = '${workspaceFolder}',
+        stopOnEntry = false,
+        runInTerminal = true,
+        console = 'integratedTerminal',
+      },
+    }
 
     -- Install golang specific config
     require('dap-go').setup {
