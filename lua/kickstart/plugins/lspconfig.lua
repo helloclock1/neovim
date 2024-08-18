@@ -191,6 +191,9 @@ return {
             end, { buffer = buf, desc = '[l]sp [h]ints toggle' })
           end,]]
         },
+        texlab = {
+          filetypes = { 'tex' },
+        },
         -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},

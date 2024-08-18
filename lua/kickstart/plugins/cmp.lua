@@ -34,6 +34,8 @@ return {
       --  into multiple repos for maintenance purposes.
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
+      'micangl/cmp-vimtex',
+      'hrsh7th/cmp-omni',
     },
     config = function()
       -- See `:help cmp`
@@ -95,6 +97,7 @@ return {
           ['<C-j>'] = cmp.mapping.scroll_docs(4),
         },
         sources = {
+          { name = 'buffer' },
           {
             name = 'lazydev',
             -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
@@ -118,6 +121,14 @@ return {
           },
         },
       }
+      cmp.setup.filetype('tex', {
+        sources = {
+          { name = 'vimtex' },
+          { name = 'nvim_lsp' },
+          { name = 'luasnip' },
+          { name = 'path' },
+        },
+      })
     end,
   },
 }
