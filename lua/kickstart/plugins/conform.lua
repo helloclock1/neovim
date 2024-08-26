@@ -28,6 +28,7 @@ return {
       formatters_by_ft = {
         lua = { 'stylua' },
         cpp = { 'clang-format' },
+        js = { 'biome' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
