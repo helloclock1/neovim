@@ -170,6 +170,7 @@ return {
           on_attach = function(_, buf)
             require('clangd_extensions.inlay_hints').setup_autocmd()
             require('clangd_extensions.inlay_hints').set_inlay_hints()
+            require('lsp_signature').on_attach({}, buf)
           end,
           -- it is also possible to enable inlay hints with <leader>lh
           --[[on_attach = function(_, buf)
@@ -219,6 +220,7 @@ return {
             },
           },
         },
+        asm_lsp = {},
       }
 
       -- Ensure the servers and tools above are installed

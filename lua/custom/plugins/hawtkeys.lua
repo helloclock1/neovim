@@ -9,4 +9,6 @@ return {
     --- if you use functions, or whichkey, or lazy to map keys
     --- then please see the API below for options
   },
+  cmd = 'Hawtkeys',
+  lazy = true,
 }

@@ -41,9 +41,18 @@ return {
       -- See `:help cmp`
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
+      local lspkind = require 'lspkind'
       luasnip.config.setup {}
 
       cmp.setup {
+        formatting = {
+          format = lspkind.cmp_format {
+            mode = 'symbol_text',
+            maxwidth = 50,
+            ellipsis_char = '...',
+            show_labelDetails = true,
+          },
+        },
         snippet = {
           expand = function(args)
             luasnip.lsp_expand(args.body)
@@ -113,7 +122,9 @@ return {
             cmp.config.compare.offset,
             cmp.config.compare.exact,
             cmp.config.compare.recently_used,
+            -- cmp.config.score,
             require 'clangd_extensions.cmp_scores',
+            require('cmp-under-comparator').under,
             cmp.config.compare.kind,
             cmp.config.compare.sort_text,
             cmp.config.compare.length,

@@ -45,4 +45,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+vim.keymap.set('n', '<leader>gg', '<cmd>BlackJackNewGame<CR>', { desc = 'Play Blackjack' })
+
+-- lspui related keymaps
+vim.keymap.set('n', '<leader>lr', '<cmd>LspUI rename<CR>', { desc = '[L]spUI: [R]ename the symbol below the cursor' })
+vim.keymap.set('n', '<leader>lh', '<cmd>LspUI hover<CR>', { desc = '[L]spUI: Open [h]over popup' })
+vim.keymap.set('n', '<leader>la', '<cmd>LspUI code_action<CR>', { desc = '[L]spUI: Open code [a]ction prompt' })
 -- vim: ts=2 sts=2 sw=2 et
