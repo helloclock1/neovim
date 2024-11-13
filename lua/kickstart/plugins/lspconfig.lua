@@ -167,11 +167,11 @@ return {
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         clangd = {
-          on_attach = function(_, buf)
+          --[[on_attach = function(_, buf)
             require('clangd_extensions.inlay_hints').setup_autocmd()
             require('clangd_extensions.inlay_hints').set_inlay_hints()
             require('lsp_signature').on_attach({}, buf)
-          end,
+          end,]]
           -- it is also possible to enable inlay hints with <leader>lh
           --[[on_attach = function(_, buf)
             local group = vim.api.nvim_create_augroup('clangd_no_inlay_hints_in_insert', { clear = true })
@@ -220,7 +220,20 @@ return {
             },
           },
         },
-        asm_lsp = {},
+        asm_lsp = {
+          cmd = {
+            'asm-lsp',
+          },
+          filetypes = {
+            'asm',
+            's',
+            'S',
+          },
+        },
+        -- rust_analyzer = {},
+        basedpyright = {},
+        clojure_lsp = {},
+        -- hls = {},
       }
 
       -- Ensure the servers and tools above are installed

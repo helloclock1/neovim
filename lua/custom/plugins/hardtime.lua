@@ -5,6 +5,6 @@ return {
     'nvim-lua/plenary.nvim',
   },
   opts = {
-    disable_mouse = false,
+    disable_mouse = true,
   },
 }
